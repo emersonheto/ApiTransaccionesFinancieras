@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "a466e5a1-82f5-41d2-9095-d0d76961e121",
+		"name": "apiRestTransacciones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13490395"
+	},
+	"item": [
+		{
+			"name": "Listar Cuentas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/cuentas"
+			},
+			"response": []
+		},
+		{
+			"name": "Procesar depositos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"monto\": 1000 }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/cuentas/4/depositar"
+			},
+			"response": []
+		},
+		{
+			"name": "Procesar retiro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"monto\": 200 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/cuentas/1/retirar"
+			},
+			"response": []
+		},
+		{
+			"name": "Procesar Transferencia",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"cuentaDestinoId\": 2, \"monto\": 5 }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:8000/api/cuentas/1/transferir"
+			},
+			"response": []
+		},
+		{
+			"name": "Ver detalle de cuenta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/cuentas/2/"
+			},
+			"response": []
+		}
+	]
+}
