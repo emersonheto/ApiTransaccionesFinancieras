@@ -65,13 +65,10 @@ class CuentaController extends Controller
     }
 
     public function procesarTransferencia(Request $request, $id)
-    {
-        
-        
+    {                
         if ($id == $request->cuentaDestinoId) {
             return response()->json(['error' => 'No puedes transferir dinero a la misma cuenta'], 400);
         }
-
 
         $cuentaOrigen = Cuenta::findOrFail($id);
         $cuentaDestino = Cuenta::findOrFail($request->cuentaDestinoId);
