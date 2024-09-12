@@ -16,46 +16,45 @@ Sigue estos pasos para levantar el proyecto en tu máquina local.
 
 ### Clonar el Repositorio
 ~~~bash  
-  git clone https://github.com/emersonheto/ApiTransaccionesFinancieras.git
-~~~
-
-
+git clone https://github.com/emersonheto/ApiTransaccionesFinancieras.git
 
 cd ApiTransaccionesFinancieras
 composer install
-
 cp .env.example .env
 
+~~~
+
+
 ### Modifica el archivo .env para agregar tus credenciales de base de datos:
+~~~bash 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=nombre_de_la_base_de_datos
 DB_USERNAME=usuario
 DB_PASSWORD=contraseña
-
+~~~
 ### Generar la Key de la Aplicación
+~~~bash 
 php artisan key:generate
-
+~~~
 ### Migrar la Base de Datos
 Ejecuta las migraciones para crear las tablas necesarias:
 
-bash
-Copiar código
+~~~bash 
 php artisan migrate
-
+~~~
 ### Seed
+~~~bash 
 Ejecuta para crear las cuentas iniciales
 
 php artisan db:seed --class=CuentaSeeder
-
+~~~
 ### Ejecutar el Servidor
 Inicia el servidor local de Laravel:
-
-
-Copiar código
+~~~bash 
 php artisan serve
- 
+~~~
 
 ## Importar a POSTMAN
 Descargar el archivo json apiRestTransacciones.postman_collection.json y importarlo en POSTMAN para realizar las pruebas
