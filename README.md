@@ -4,11 +4,10 @@ Este proyecto es una API REST construida con Laravel para gestionar cuentas y pr
 
 ## Requisitos
 
-- PHP 7.4 o superior
+- PHP 8
 - Composer
 - MySQL (o cualquier base de datos soportada por Laravel)
 - Git
-- Node.js (opcional, si necesitas compilar assets con Laravel Mix)
 
 ## Instalación
 
