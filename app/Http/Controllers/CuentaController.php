@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cuenta;
-use App\Models\HistorialTransaccion;
 
 class CuentaController extends Controller
 {
-
     public function listarCuentas()
     {
         $cuentas = Cuenta::select('id', 'saldo', 'titular_nombre', 'titular_direccion')->get();
@@ -68,7 +66,13 @@ class CuentaController extends Controller
 
     public function procesarTransferencia(Request $request, $id)
     {
-        // dd("hika");
+        
+        
+        if ($id == $request->cuentaDestinoId) {
+            return response()->json(['error' => 'No puedes transferir dinero a la misma cuenta'], 400);
+        }
+
+
         $cuentaOrigen = Cuenta::findOrFail($id);
         $cuentaDestino = Cuenta::findOrFail($request->cuentaDestinoId);
         $validated = $request->validate(['monto' => 'required|numeric|min:1']);
@@ -98,59 +102,4 @@ class CuentaController extends Controller
         return response()->json(['message' => 'Transferencia exitosa', 'cuenta_origen' => $cuentaOrigen, 'cuenta_destino' => $cuentaDestino]);
     }
     
-
-
-
-    // public function retirar(Request $request, $id)
-    // {
-    //     $cuenta = Cuenta::findOrFail($id);
-    //     $monto = $request->input('monto');
-    //     $comision = 0.02 * $monto;
-    
-    //     if ($cuenta->tipo_cuenta == 'CuentaEstandar' && $cuenta->saldo - ($monto + $comision) < 100) {
-    //         return response()->json(['error' => 'Saldo insuficiente'], 400);
-    //     }
-    
-    //     $cuenta->saldo -= ($monto + $comision);
-    //     $cuenta->save();
-    
-    //     Transaccion::create([
-    //         'cuenta_id' => $cuenta->id,
-    //         'tipo' => 'retiro',
-    //         'monto' => $monto,
-    //         'comision' => $comision
-    //     ]);
-    
-    //     return response()->json(['message' => 'Retiro realizado con éxito']);
-    // }
-    
-    // public function transferir(Request $request, $id)
-    // {
-    //     $cuentaOrigen = Cuenta::findOrFail($id);
-    //     $cuentaDestino = Cuenta::findOrFail($request->input('cuentaDestinoId'));
-    //     $monto = $request->input('monto');
-    //     $comision = 0.01 * $monto;
-    
-    //     if ($cuentaOrigen->tipo_cuenta == 'CuentaEstandar' && $cuentaOrigen->saldo - ($monto + $comision) < 100) {
-    //         return response()->json(['error' => 'Saldo insuficiente'], 400);
-    //     }
-    
-    //     $cuentaOrigen->saldo -= ($monto + $comision);
-    //     $cuentaDestino->saldo += $monto;
-    //     $cuentaOrigen->save();
-    //     $cuentaDestino->save();
-    
-    //     Transaccion::create([
-    //         'cuenta_id' => $cuentaOrigen->id,
-    //         'tipo' => 'transferencia',
-    //         'monto' => $monto,
-    //         'comision' => $comision
-    //     ]);
-    
-    //     return response()->json(['message' => 'Transferencia realizada con éxito']);
-    // }
-    
-
-
-
 }
