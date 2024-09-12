@@ -15,7 +15,10 @@ Este proyecto es una API REST construida con Laravel para gestionar cuentas y pr
 Sigue estos pasos para levantar el proyecto en tu máquina local.
 
 ### Clonar el Repositorio
-git clone https://github.com/emersonheto/ApiTransaccionesFinancieras.git
+~~~bash  
+  git clone https://github.com/emersonheto/ApiTransaccionesFinancieras.git
+~~~
+
 
 
 cd ApiTransaccionesFinancieras
