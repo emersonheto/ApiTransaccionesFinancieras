@@ -55,6 +55,11 @@ php artisan serve
  
 
 ## Importa el archivo json apiRestTransacciones.postman_collection.json en POSTMAN para realizar las pruebas
+[apiRestTransacciones.postman_collection.json](https://github.com/user-attachments/files/16984048/apiRestTransacciones.postman_collection.json)
+
+![image](https://github.com/user-attachments/assets/f2188576-1543-4dcb-a5d4-beab7b1f82fd)
+
+![image](https://github.com/user-attachments/assets/d5f08726-263e-47dc-aa64-47beca4853dd)
 
 
 
